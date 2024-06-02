@@ -92,6 +92,15 @@ spec:
       containers:
       - name: mariadb
         image: mariadb:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: adminmmit
+        - name: MYSQL_DATABASE
+          value: nextcloud
+        - name: MYSQL_USER
+          value: nextcloud
+        - name: MYSQL_PASSWORD
+          value: nextcloud
         ports:
         - containerPort: 3306
         volumeMounts:
@@ -101,7 +110,6 @@ spec:
       - name: mariadb-storage
         persistentVolumeClaim:
           claimName: mariadb-pvc
-
 ---
 apiVersion: v1
 kind: Service
